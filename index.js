@@ -20,7 +20,6 @@ db.connect(err => {
   }
 });
 
-// CREATE CAR
 app.post("/cars", (req, res) => {
   db.query("INSERT INTO Car SET ?", req.body, (err) => {
     if (err) return res.send(err);
@@ -28,12 +27,10 @@ app.post("/cars", (req, res) => {
   });
 });
 
-// READ CARS
 app.get("/", (req, res) => {
   res.send("Welcome to the Car Repair Payment Management System!");
 });
 
-// DELETE CAR
 app.delete("/cars/:plate", (req, res) => {
   db.query("DELETE FROM Car WHERE PlateNumber = ?", [req.params.plate], (err) => {
     if (err) return res.send(err);
@@ -41,7 +38,6 @@ app.delete("/cars/:plate", (req, res) => {
   });
 });
 
-// START SERVER
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
